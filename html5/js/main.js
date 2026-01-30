@@ -40,14 +40,27 @@ if (form && statusMessage) {
         body: formData,
       });
 
+      let responseBody = {};
+
+      try {
+        responseBody = await response.json();
+      } catch (parseError) {
+        responseBody = {};
+      }
+
       if (!response.ok) {
-        throw new Error("Nie udało się wysłać wiadomości.");
+        const errorMessage =
+          responseBody?.errors?.map((item) => item.message).join(" ") ||
+          responseBody?.error ||
+          "Nie udało się wysłać wiadomości.";
+        throw new Error(errorMessage);
       }
 
       statusMessage.textContent = "Dziękuję za wiadomość! Odezwę się wkrótce.";
       form.reset();
     } catch (error) {
-      statusMessage.textContent = "Wystąpił błąd podczas wysyłania. Spróbuj ponownie.";
+      const message = error instanceof Error ? error.message : "Wystąpił błąd podczas wysyłania. Spróbuj ponownie.";
+      statusMessage.textContent = message;
     }
   });
 }
