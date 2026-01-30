@@ -22,21 +22,22 @@ if (form && statusMessage) {
     event.preventDefault();
 
     const formData = new FormData(form);
-    const payload = {
-      name: formData.get("name"),
-      email: formData.get("email"),
-      message: formData.get("message"),
-    };
+    const endpoint = form.getAttribute("data-endpoint") || form.action;
+
+    if (!endpoint || endpoint.includes("your-id")) {
+      statusMessage.textContent = "Uzupełnij poprawny adres endpointu formularza.";
+      return;
+    }
 
     statusMessage.textContent = "Wysyłanie wiadomości...";
 
     try {
-      const response = await fetch("/api/contact", {
+      const response = await fetch(endpoint, {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
+          Accept: "application/json",
         },
-        body: JSON.stringify(payload),
+        body: formData,
       });
 
       if (!response.ok) {
