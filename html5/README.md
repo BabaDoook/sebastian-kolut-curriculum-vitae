@@ -12,15 +12,9 @@ npx serve html5
 
 ## Formularz kontaktowy
 
-Formularz wysyła dane na endpoint `POST /api/contact`. Upewnij się, że backend działa i ma skonfigurowane dane SMTP.
+Formularz jest przygotowany do działania na hostingu statycznym i wysyła dane do zewnętrznego endpointu (np. Web3Forms).
 
-Aby uruchomić backend:
+1. Załóż formularz w Web3Forms i skopiuj klucz dostępu (`access_key`).
+2. W pliku `html5/index.html` uzupełnij wartość pola `access_key` oraz upewnij się, że atrybuty `action` i `data-endpoint` wskazują na `https://api.web3forms.com/submit`.
 
-```sh
-cd backend
-npm install
-cp .env.example .env
-npm run start
-```
-
-W pliku `.env` ustaw prawidłowe dane SMTP.
+Po uzupełnieniu adresu formularz będzie działał bez backendu.

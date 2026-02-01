@@ -459,7 +459,14 @@
 
             <div class="rounded-lg border bg-card text-card-foreground shadow-sm border-border animate-slide-up" style="animation-delay: 0.1s;">
               <div class="p-6">
-                <form id="contact-form" class="space-y-6">
+                <form
+                  id="contact-form"
+                  class="space-y-6"
+                  action="https://api.web3forms.com/submit"
+                  method="POST"
+                  data-endpoint="https://api.web3forms.com/submit"
+                >
+                  <input type="hidden" name="access_key" value="2107cec9-c6e9-4127-973f-f5dc06a435fe" />
                   <div>
                     <label for="name" class="block text-sm font-medium mb-2 text-foreground">Imię i Nazwisko</label>
                     <input

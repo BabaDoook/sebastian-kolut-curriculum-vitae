@@ -22,31 +22,48 @@ if (form && statusMessage) {
     event.preventDefault();
 
     const formData = new FormData(form);
-    const payload = {
-      name: formData.get("name"),
-      email: formData.get("email"),
-      message: formData.get("message"),
-    };
+    const endpoint = form.getAttribute("data-endpoint") || form.action;
+
+    const isRelativeEndpoint = endpoint && !endpoint.startsWith("http");
+
+    if (!endpoint || endpoint.includes("your-id") || isRelativeEndpoint) {
+      statusMessage.textContent =
+        "Uzupełnij poprawny adres endpointu formularza (np. https://api.web3forms.com/submit).";
+      return;
+    }
 
     statusMessage.textContent = "Wysyłanie wiadomości...";
 
     try {
-      const response = await fetch("/api/contact", {
+      const response = await fetch(endpoint, {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
+          Accept: "application/json",
         },
-        body: JSON.stringify(payload),
+        body: formData,
       });
 
+      let responseBody = {};
+
+      try {
+        responseBody = await response.json();
+      } catch (parseError) {
+        responseBody = {};
+      }
+
       if (!response.ok) {
-        throw new Error("Nie udało się wysłać wiadomości.");
+        const errorMessage =
+          responseBody?.errors?.map((item) => item.message).join(" ") ||
+          responseBody?.error ||
+          "Nie udało się wysłać wiadomości.";
+        throw new Error(errorMessage);
       }
 
       statusMessage.textContent = "Dziękuję za wiadomość! Odezwę się wkrótce.";
       form.reset();
     } catch (error) {
-      statusMessage.textContent = "Wystąpił błąd podczas wysyłania. Spróbuj ponownie.";
+      const message = error instanceof Error ? error.message : "Wystąpił błąd podczas wysyłania. Spróbuj ponownie.";
+      statusMessage.textContent = message;
     }
   });
 }
