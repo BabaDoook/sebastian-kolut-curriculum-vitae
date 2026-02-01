@@ -12,9 +12,9 @@ npx serve html5
 
 ## Formularz kontaktowy
 
-Formularz jest przygotowany do działania na hostingu statycznym i wysyła dane do zewnętrznego endpointu (np. Formspree).
+Formularz jest przygotowany do działania na hostingu statycznym i wysyła dane do zewnętrznego endpointu (np. Web3Forms).
 
-1. Załóż formularz w Formspree i skopiuj adres endpointu (format: `https://formspree.io/f/XYZ`).
-2. W pliku `html5/index.html` podmień atrybuty `action` oraz `data-endpoint` w tagu `<form>` na swój adres.
+1. Załóż formularz w Web3Forms i skopiuj klucz dostępu (`access_key`).
+2. W pliku `html5/index.html` uzupełnij wartość pola `access_key` oraz upewnij się, że atrybuty `action` i `data-endpoint` wskazują na `https://api.web3forms.com/submit`.
 
 Po uzupełnieniu adresu formularz będzie działał bez backendu.

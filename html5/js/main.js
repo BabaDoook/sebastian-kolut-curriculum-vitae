@@ -24,8 +24,11 @@ if (form && statusMessage) {
     const formData = new FormData(form);
     const endpoint = form.getAttribute("data-endpoint") || form.action;
 
-    if (!endpoint || endpoint.includes("your-id")) {
-      statusMessage.textContent = "Uzupełnij poprawny adres endpointu formularza.";
+    const isRelativeEndpoint = endpoint && !endpoint.startsWith("http");
+
+    if (!endpoint || endpoint.includes("your-id") || isRelativeEndpoint) {
+      statusMessage.textContent =
+        "Uzupełnij poprawny adres endpointu formularza (np. https://api.web3forms.com/submit).";
       return;
     }
 
