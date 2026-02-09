@@ -71,11 +71,134 @@ body {
 }
 
 @media print {
+  @page {
+    size: A4;
+    margin: 16mm;
+  }
+
   body {
     background: #ffffff;
+    color: #111111;
+    font-size: 11pt;
   }
 
   .no-print {
     display: none !important;
+  }
+
+  .print-hide {
+    display: none !important;
+  }
+
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
+
+  section {
+    background: transparent !important;
+    padding: 0 0 18px 0 !important;
+  }
+
+  .grid {
+    display: block !important;
+  }
+
+  .grid > * {
+    margin-bottom: 16px !important;
+  }
+
+  .text-muted-foreground {
+    color: #444444 !important;
+  }
+
+  #experience .absolute {
+    display: none !important;
+  }
+
+  #experience .md\\:text-right {
+    text-align: left !important;
+  }
+
+  #experience .md\\:pr-12 {
+    padding-right: 0 !important;
+  }
+
+  #experience .pl-8 {
+    padding-left: 0 !important;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .rounded-xl,
+  .rounded-lg,
+  .rounded-2xl,
+  .rounded-md {
+    border-radius: 8px !important;
+  }
+
+  .border {
+    border-color: #e5e5e5 !important;
+  }
+
+  .p-6 {
+    padding: 16px !important;
+  }
+
+  .p-4 {
+    padding: 12px !important;
+  }
+
+  .mb-16 {
+    margin-bottom: 20px !important;
+  }
+
+  .mb-12 {
+    margin-bottom: 18px !important;
+  }
+
+  .mb-8 {
+    margin-bottom: 12px !important;
+  }
+
+  .gap-12 {
+    gap: 16px !important;
+  }
+
+  .gap-8 {
+    gap: 12px !important;
+  }
+
+  .space-y-12 > :not([hidden]) ~ :not([hidden]) {
+    margin-top: 16px !important;
+  }
+
+  .space-y-6 > :not([hidden]) ~ :not([hidden]) {
+    margin-top: 10px !important;
+  }
+
+  .space-y-4 > :not([hidden]) ~ :not([hidden]) {
+    margin-top: 8px !important;
+  }
+
+  .space-y-3 > :not([hidden]) ~ :not([hidden]) {
+    margin-top: 6px !important;
+  }
+
+  .space-y-2 > :not([hidden]) ~ :not([hidden]) {
+    margin-top: 4px !important;
+  }
+
+  ul,
+  li,
+  article,
+  .rounded-lg,
+  .rounded-xl {
+    break-inside: avoid;
   }
 }

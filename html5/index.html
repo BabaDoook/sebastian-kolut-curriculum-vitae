@@ -97,7 +97,7 @@
                 potwierdzona regularnym udziałem w kursach i webinarach. Chętnie przedstawię więcej szczegółów na mój
                 temat podczas spotkania
               </p>
-              <div class="flex flex-wrap gap-4 pt-4">
+              <div class="no-print flex flex-wrap gap-4 pt-4">
                 <button
                   type="button"
                   data-scroll="experience"
@@ -127,7 +127,7 @@
                 </button>
               </div>
             </div>
-            <div class="relative animate-fade-in">
+            <div class="relative animate-fade-in print-hide">
               <div class="relative rounded-2xl overflow-hidden shadow-lg border border-border">
                 <img
                   src="assets/sebastian-portrait.jpg"
@@ -457,7 +457,7 @@
               </div>
             </div>
 
-            <div class="rounded-lg border bg-card text-card-foreground shadow-sm border-border animate-slide-up" style="animation-delay: 0.1s;">
+            <div class="rounded-lg border bg-card text-card-foreground shadow-sm border-border animate-slide-up no-print" style="animation-delay: 0.1s;">
               <div class="p-6">
                 <form
                   id="contact-form"
@@ -521,6 +521,20 @@
             id="download-pdf"
             class="no-print inline-flex items-center gap-2 text-sm text-background/80 hover:text-background transition-colors"
           >
+            <svg
+              class="h-4 w-4"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="7 10 12 15 17 10" />
+              <line x1="12" x2="12" y1="15" y2="3" />
+            </svg>
             Pobierz PDF
           </button>
           <p class="text-sm">© <span id="year">2024</span> Sebastian Kolut. Wszelkie prawa zastrzeżone.</p>
