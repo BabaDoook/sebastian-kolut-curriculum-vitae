@@ -2,6 +2,7 @@ const scrollButtons = document.querySelectorAll("[data-scroll]");
 const form = document.getElementById("contact-form");
 const statusMessage = document.getElementById("form-status");
 const yearSpan = document.getElementById("year");
+const downloadPdfButton = document.getElementById("download-pdf");
 
 scrollButtons.forEach((button) => {
   button.addEventListener("click", () => {
@@ -15,6 +16,12 @@ scrollButtons.forEach((button) => {
 
 if (yearSpan) {
   yearSpan.textContent = new Date().getFullYear().toString();
+}
+
+if (downloadPdfButton) {
+  downloadPdfButton.addEventListener("click", () => {
+    window.print();
+  });
 }
 
 if (form && statusMessage) {

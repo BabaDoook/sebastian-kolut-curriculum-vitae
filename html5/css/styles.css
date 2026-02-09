@@ -69,3 +69,13 @@ body {
     transform: translateY(0);
   }
 }
+
+@media print {
+  body {
+    background: #ffffff;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+}
